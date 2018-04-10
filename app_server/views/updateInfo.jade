@@ -1,0 +1,16 @@
+block content
+  head
+    link(href='/static/main.css', rel='stylesheet')
+  h3.
+    User Information
+
+  ul
+    each u in updateInfo
+      ul(class="currencylist")
+        #{u.password} #{u.username}
+      ul(class="currencylist")
+          #{u.password} Address:#{u.address}
+      ul(class="currencylist")
+            Phone Number:#{u.mobile}
+  h3.
+    #[a(target="_blank", href="/home") Go back to Home]

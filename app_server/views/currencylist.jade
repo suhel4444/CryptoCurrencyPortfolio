@@ -1,0 +1,15 @@
+block content
+  head
+    link(href='/static/main.css', rel='stylesheet')
+  h3.
+    Transaction History
+
+  h3.
+    Price  Currency_Code  Order_Date Order_qty Total_Amount
+  ul
+    each transaction in currencylist
+      ul(class="currency_list")
+        #{transaction.current_price}, #{transaction.currency_code}, #{transaction.order_date}, #{transaction.order_qty}, #{transaction.tot_amt}
+
+  h3.
+    #[a(target="_blank", href="/home") Go back to Home]
