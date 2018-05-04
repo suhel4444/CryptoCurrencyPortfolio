@@ -331,16 +331,8 @@ module.exports.post_convert = function(request, result)
 
 //*******************************************************************NEW
 module.exports.get_history = ('/history', function(req, res){
-
-
-    var collection = db.collection('currency');
-    // console.log(user_name);
-    // Find all students
-   
-    console.log("This is "+ req.session.user);
-    
+    var collection = db.collection('currency');    
     collection.find({username:req.session.user},function (err, result) {
-        // console.log(user_name);
       if (err) {
         res.send("Find failed.");
         console.log("Failure")
@@ -371,23 +363,37 @@ else
   result.redirect('/home');
 }
 });
-module.exports.get_viewinfo = ('/viewinfo', function(request, res) 
-{
-  var collection = db.collection('login');
-  // console.log(user_name);
-  // Find all students
-  user_name=request.session.user;
-  collection.find({username:user_name},function (err, result) {
-    if (err) {
-      res.send("Find failed.");
-                         }
+// module.exports.get_viewinfo = ('/viewinfo', function(request, res) 
+// {
+//   var collection = db.collection('login');
+//   console.log(request.session.user);
+//   collection.find({username:request.session.user},function (err, result) {
+//     if (err) {
+//       res.send("Find failed.");
+//                          }
+//                          else {
+//                               res.render('updateInfo', 
+//                                         { "updateInfo" : result })
+//                                 console.log("This is view info" + result);
+//                          }
+
+//   });
+//   });
+module.exports.get_viewinfo = ('/viewinfo', function(req, res){
+    var collection = db.collection('login');    
+    collection.find({username:req.session.user},function (err, result) {
+      if (err) {
+        res.send("Find failed.");
+        }
                          else {
                              res.render('updateInfo', 
                                         { "updateInfo" : result })
+                            console.log(result)
                          }
 
-  });
-  });
+    });
+});
+
   module.exports.get_updateuser = function(request, result)
   {
       sendPage('updateuser.html', result);
