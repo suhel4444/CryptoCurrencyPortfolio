@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My History</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>RECENT TRANSACTIONS</h2>        
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+      	<th>Currency</th>
+      	<th>Order Date</th>
+      	<th>Order Quantity</th>
+      	<th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+		<% for(var i=0; i < currencylist.length; i++) { %>
+		<tr>
+ 		<th scope="row"><%= i+1 %></th>
+ 		<td><b><%= currencylist[i].currency_code%></b></td>
+ 		<td><b><%= currencylist[i].order_date%></b></td>
+ 		<td><b><%= currencylist[i].order_qty%></b></td>
+ 		<td><b><%= currencylist[i].tot_amt%></b></td>
+ 		</tr>
+ 		<% } %>
+ 	</tbody>
+  </table>
+</div>
+</body>
+</html>

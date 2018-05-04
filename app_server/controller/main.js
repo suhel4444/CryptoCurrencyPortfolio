@@ -243,7 +243,7 @@ module.exports.post_login = function(request,result)
     console.log(res);
 
     request.session.user=user;
-
+    console.log(request.session.user)
     sendPage('home.html',result);
 
 }
@@ -336,13 +336,19 @@ module.exports.get_history = ('/history', function(req, res){
     var collection = db.collection('currency');
     // console.log(user_name);
     // Find all students
-    collection.find({username:user_name},function (err, result) {
+   
+    console.log("This is "+ req.session.user);
+    
+    collection.find({username:req.session.user},function (err, result) {
+        // console.log(user_name);
       if (err) {
         res.send("Find failed.");
+        console.log("Failure")
                          }
                          else {
                              res.render('currencylist', 
                                         { "currencylist" : result })
+                            console.log(result)
                          }
 
     });
